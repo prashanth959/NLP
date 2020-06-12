@@ -1,0 +1,19 @@
+# Tokenization - Splitting the a sentence/phrase/paragraph into a smaller units or words. 
+
+# Importing all the necessary libraries
+import pandas as pd
+import nltk
+from nltk import word_tokenize
+
+# Reading the csv source file.
+data = pd.read_csv("ticket_Data.csv")
+
+data.head()
+data.shape
+
+# Removing the column TicketId. It is optional, if you want, you can keep it.
+# data = data.drop("TicketId", axis=1) 
+
+# We will create a new column tokenized_text. This column will contain the tokenized words[list of words]
+data['tokenized_text'] = data['Description'].apply(word_tokenize)
+data.head()
